@@ -57,5 +57,17 @@ def filter_and_split_inputs(inputs):
         training_ex, labels = create_fail(training_ex)
         training_examples_labels.append(labels)
         training_examples_inputs.append(training_ex)
+    
+    list_of_pairs = [sublist for sublist in list_of_pairs for _ in range(4)]
 
-    return np.array(list_of_pairs), np.array(training_examples_inputs), np.array(training_examples_labels)
+    training_examples_inputs = [item for sublist in training_examples_inputs for item in sublist]
+
+    training_examples_labels = [item for sublist in training_examples_labels for item in sublist]
+
+    shuffling = list(zip(list_of_pairs, training_examples_inputs, training_examples_labels))
+
+    random.shuffle(shuffling)
+    
+    list_of_pairs, training_examples_inputs, training_examples_labels = zip(*shuffling)
+
+    return np.array(list_of_pairs), np.array(training_examples_inputs), np.expand_dims(np.array(training_examples_labels), axis=-1)
