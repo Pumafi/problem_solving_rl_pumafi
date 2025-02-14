@@ -124,4 +124,10 @@ def create_fail(challenge_grids):
 
         challenge_grids.append((tuple_grids[0], failed_grid))
         labels.append(0)
+        
+    shuffling = list(zip(challenge_grids, labels))
+
+    random.shuffle(shuffling)
+    
+    challenge_grids, labels = zip(*shuffling)
     return challenge_grids, labels
