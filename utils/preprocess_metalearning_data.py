@@ -1,6 +1,7 @@
 import numpy as np
 from utils.noising_grids import create_fail
 import random
+import tensorflow as tf
 
 def split_list(lst):
     # Remove list that are too small for meta-learning, and split the ones that are too big. We want a standard size
