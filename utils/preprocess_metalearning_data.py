@@ -71,4 +71,15 @@ def filter_and_split_inputs(inputs):
     
     list_of_pairs, training_examples_inputs, training_examples_labels = zip(*shuffling)
 
-    return np.array(list_of_pairs), np.array(training_examples_inputs), np.expand_dims(np.array(training_examples_labels), axis=-1)
+    training_z, training_x, training_y =  np.array(list_of_pairs), np.array(training_examples_inputs), np.expand_dims(np.array(training_examples_labels), axis=-1)
+
+    training_z_1, training_z_2 = tf.keras.ops.unstack(training_z, axis=1)
+
+
+    training_z_1 = tf.squeeze(tf.concat(tf.keras.ops.unstack(training_z_1, axis=1), axis=-1))
+    training_z_2 = tf.squeeze(tf.concat(tf.keras.ops.unstack(training_z_2, axis=1), axis=-1))
+
+    training_x = tf.squeeze(tf.concat(tf.keras.ops.unstack(training_x, axis=1), axis=-1))
+
+
+    return training_z_1, training_z_2, training_x, training_y
