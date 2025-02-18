@@ -35,9 +35,19 @@ def get_color_map(number_of_categories=4):
         cmap = colors.ListedColormap(["#000000", "#5387AD", "#7DD57E", "#F1E33E", "#C70000"])
         bounds = [-0.1, 0.9, 1.9, 2.9, 3.9, 4.9]
     else:  # 9
-        cmap = colors.ListedColormap(
-            ["#000000", "#294255", "#5387AD", "#6DB6B1", "#7DD57E", "#B5DF5D", "#F1E33E", "#F77420", "#C70000"])
-        bounds = [-0.1, 0.9, 1.9, 2.9, 3.9, 4.9, 5.9, 6.9, 7.9, 8.9]
+        cmap = colors.ListedColormap([
+            "000000",   # Black
+            "#1F77B4",  # Blue
+            "#FF7F0E",  # Orange
+            "#2CA02C",  # Green
+            "#D62728",  # Red
+            "#9467BD",  # Purple
+            "#E377C2",  # Pink
+            "#7F7F7F",  # Gray
+            "#BCBD22",  # Yellow-Green
+            "#17BECF"   # Cyan
+        ])
+        bounds = [-0.1, 0.9, 1.9, 2.9, 3.9, 4.9, 5.9, 6.9, 7.9, 8.9, 9.9]
 
     norm = colors.BoundaryNorm(bounds, cmap.N)
 
