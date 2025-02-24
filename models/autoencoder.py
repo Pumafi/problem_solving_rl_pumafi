@@ -22,7 +22,7 @@ from tensorflow.keras.models import Model
 latent_dim = 256
 class AutoEncoder(Model):
   def __init__(self):
-    super(Denoise, self).__init__()
+    super(AutoEncoder, self).__init__()
     self.encoder = tf.keras.Sequential([
       layers.Input(shape=(30, 30, 10)),
       layers.Conv2D(64, (3, 3), activation='swish', padding='same', strides=2),
